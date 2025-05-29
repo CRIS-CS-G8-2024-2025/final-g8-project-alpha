@@ -31,13 +31,35 @@ def ButtonClick(button):
 
 def CheckForWin():
     global button1, button2, button3, button4, button5,button6, button7, button8, button9
-    if button1 ["text"] == "X" and button2["text"] == "X" and button3 ["text"] == "X" or button4 ["text"] == "X" \
-        and button5["text"] == "X" and button6 ["text"] == "X" or button7 ["text"] == "X" \
-            and button8["text"] == "X" and button9 ["text"] == "X":
+    # horisontal Xs
+    if      button1 ["text"] == "X" and button2["text"] == "X" and button3 ["text"] == "X" or \
+            button4 ["text"] == "X" and button5["text"] == "X" and button6 ["text"] == "X" or \
+            button7 ["text"] == "X" and button8["text"] == "X" and button9 ["text"] == "X":
+        messagebox.showinfo("Tic Tac Toe", "Player X has already entered")
+    # horizontal Os
+    elif    button1 ["text"] == "O" and button2["text"] == "O" and button3 ["text"] == "O" or \
+            button4 ["text"] == "O" and button5["text"] == "O" and button6 ["text"] == "O" or \
+            button7 ["text"] == "O" and button8["text"] == "O" and button9 ["text"] == "O":
+        messagebox.showinfo("Tic Tac Toe", "Player O has already entered")
+    elif    button3 ["text"] == "X" and button5["text"] == "X" and button9 ["text"] == "X" and \
+            button1 ["text"] == "X" and button4["text"] == "X" and button7 ["text"] == "X" and \
+            button2 ["text"] == "X" and button5["text"] == "X" and button8 ["text"] == "X" and \
+            button3 ["text"] == "X" and button6["text"] == "X" and button9 ["text"] == "X":
         messagebox.showinfo("Tic Tac Toe","Player X has already entered")
+    elif    button3 ["text"] == "O" and button5["text"] == "O" and button9 ["text"] == "O" and \
+            button1 ["text"] == "O" and button4["text"] == "O" and button7 ["text"] == "O" and \
+            button2 ["text"] == "O" and button5["text"] == "O" and button8 ["text"] == "O" and \
+            button3 ["text"] == "O" and button6["text"] == "O" and button9 ["text"] == "O":
+        messagebox.showinfo("Tic Tac Toe","Player O has already entered")
+    elif flag==8:
+            messagebox.showinfo("Tic Tac Toe","Game Tied")
+
 
 main = Tk()
 main.title("TIC TAC TOE")
+
+x_o = True
+flag = 0 
 
 button1 = Button(main, text="", font=("arial",60,"bold"),bg="#ffb5a7",fg="white",width=3, command=lambda: ButtonClick(button1))
 
