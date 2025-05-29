@@ -12,12 +12,10 @@ def ButtonClick(button):
         button ["text"] = "O"
         x_o = True
         flag = flag+1   
-    elif button["text"] == "" and x_o == False:
-        button["text"] = "0"
-        x_o = True
-        flag = flag+1
     else: 
         messagebox.showinfo("Tic Tac Toe","Player has already entered")
+
+    
 
 """
 1 2 3
@@ -88,5 +86,11 @@ button8.grid(row=2,column=1)
 
 button9 = Button(main, text="", font=("arial",60,"bold"),bg="#ffb5a7",fg="white",width=3, command=lambda: ButtonClick(button9))
 button9.grid(row=2,column=2)
+
+button_grid = [
+    [button1, button2, button3],
+    [button4, button5, button6],
+    [button7, button8, button9],
+]
 
 main.mainloop()
