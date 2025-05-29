@@ -1,6 +1,41 @@
 from tkinter import *
 from tkinter import messagebox
 
+def ButtonClick(button):
+    global x_o, flag
+    button ["bg"] = "#2ec4b6"
+    if button["text"] == "" and x_o == True:
+        button ["text"] = "X"
+        x_o = False
+        flag = flag+1
+    elif button ["text"] == "" and x_o == False:
+        button ["text"] = "O"
+        x_o = True
+        flag = flag+1   
+    elif button["text"] == "" and x_o == False:
+        button["text"] = "0"
+        x_o = True
+        flag = flag+1
+    else: 
+        messagebox.showinfo("Tic Tac Toe","Player has already entered")
+
+"""
+1 2 3
+4 5 6
+7 8 9
+3 5 9
+1 4 7
+2 5 8
+3 6 9
+"""
+
+def CheckForWin():
+    global button1, button2, button3, button4, button5,button6, button7, button8, button9
+    if button1 ["text"] == "X" and button2["text"] == "X" and button3 ["text"] == "X" or button4 ["text"] == "X" \
+        and button5["text"] == "X" and button6 ["text"] == "X" or button7 ["text"] == "X" \
+            and button8["text"] == "X" and button9 ["text"] == "X":
+        messagebox.showinfo("Tic Tac Toe","Player X has already entered")
+
 main = Tk()
 main.title("TIC TAC TOE")
 
