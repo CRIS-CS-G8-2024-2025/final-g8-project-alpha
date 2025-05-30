@@ -13,9 +13,51 @@ def ButtonClick(button):
         x_o = True
         flag = flag+1   
     else: 
-        messagebox.showinfo("Tic Tac Toe","Player has already entered")
+        messagebox.showinfo("Tic Tac Toe", "Player has already entered")
 
+    winner = check_winner()
+    if winner == "X":
+        messagebox.showinfo("Tic Tac Toe", "X Wins!")
+    elif winner == "O":
+        messagebox.showinfo("Tic Tac Toe", "O Wins!")
+    elif winner == "Tie":
+        messagebox.showinfo("Tic Tac Toe", "Tie!")
+
+
+
+def check_winner():
+    '''return letter (X or O) of winner, "" for non finished, or "Tie"'''
+    global button_grid
+
+    # check horizontal
+    for i in range(3):
+        if button_grid[i][0]['text'] != "" \
+                and (button_grid[i][0]['text'] == button_grid[i][1]['text'] == button_grid[i][2]['text']):
+            return button_grid[i][0]['text']
+        
+    # check vertical
+    for i in range(3):
+        if button_grid[0][i]['text'] != "" \
+                and (button_grid[0][i]['text'] == button_grid[1][i]['text'] == button_grid[2][i]['text']):
+            return button_grid[0][i]['text']
+        
+    # check diaganol 1
+    if button_grid[0][0]['text'] != "" \
+            and (button_grid[0][0]['text'] == button_grid[1][1]['text'] == button_grid[2][2]['text']):
+        return button_grid[0][0]['text']
     
+    # check diaganol 2
+    if button_grid[2][0]['text'] != "" \
+            and (button_grid[2][0]['text'] == button_grid[1][1]['text'] == button_grid[0][2]['text']):
+        return button_grid[2][0]['text']
+
+    # check for not finished
+    for i in range(3):
+        for j in range(3):
+            if button_grid[i][j]['text'] == "":
+                return "" # not finished
+
+    return "Tie"  # not finished
 
 """
 1 2 3
